@@ -37,7 +37,6 @@ public class GCLogAnalysis {
 
     public static Object generateGarbage(int max) {
         int randomSize = RANDOM.nextInt(max);
-
         int type = randomSize % 4;
 
         switch (type) {
@@ -55,7 +54,6 @@ public class GCLogAnalysis {
                 }
                 return sb.toString();
         }
-
     }
 
 

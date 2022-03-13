@@ -12,7 +12,7 @@ public class GCLogAnalysis {
 
     public static void main(String[] args) {
         long startMillis = System.currentTimeMillis();
-        long timeoutMillis = TimeUnit.SECONDS.toMillis(1);
+        long timeoutMillis = TimeUnit.SECONDS.toMillis(5);
         long endMillis = startMillis + timeoutMillis;
 
         LongAdder counter = new LongAdder();

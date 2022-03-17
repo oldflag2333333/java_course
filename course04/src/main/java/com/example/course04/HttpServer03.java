@@ -20,7 +20,7 @@ public class HttpServer03 {
             try {
                 final Socket socket = serverSocket.accept();
                 System.out.println("收到请求");
-                executorService.execute(() -> Service.handle(socket));
+                executorService.execute(() -> Service.handle(socket, "jet"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

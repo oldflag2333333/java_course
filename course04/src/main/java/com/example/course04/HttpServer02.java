@@ -17,7 +17,7 @@ public class HttpServer02 {
             try {
                 Socket socket = serverSocket.accept();
                 System.out.println("接收请求！");
-                new Thread(() -> Service.handle(socket)).start();
+                new Thread(() -> Service.handle(socket, "faye")).start();
             } catch (IOException e) {
                 e.printStackTrace();
             }

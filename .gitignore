@@ -1,4 +1,5 @@
 /.idea/
 /target/
 .java-version
+.DS_Store
 

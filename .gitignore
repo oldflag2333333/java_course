@@ -1,1 +1,4 @@
-/course02/.idea/
+/.idea/
+/target/
+.java-version
+

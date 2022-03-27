@@ -4,3 +4,4 @@
 - course03 GC分析总结 (week2 命题)
 - course04 简易HttpServer和HttpClient (week2 命题)
 - course05 使用netty实现的简易网关 (week3 命题)
+- course06 线程调度+多线程脑图（week4 命题)

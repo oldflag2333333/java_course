@@ -1,3 +1,4 @@
+import java.util.Stack;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -30,6 +31,7 @@ public class SemaphoreSync {
         semaphore.acquire();
         System.out.println(str);
         semaphore.release();
+        Stack<Integer> stack = new Stack<>();
     }
 
 

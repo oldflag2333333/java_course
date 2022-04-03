@@ -1,7 +1,7 @@
-package com.example.course10.config;
+package com.oldflag.course10.config;
 
-import com.example.course10.GsonUtil;
-import com.example.course10.model.Student;
+import com.oldflag.course10.GsonUtil;
+import com.oldflag.course10.model.Student;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

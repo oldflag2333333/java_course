@@ -1,7 +1,7 @@
-package com.example.course10.config;
+package com.oldflag.course10.config;
 
-import com.example.course10.model.Klass;
-import com.example.course10.model.Student;
+import com.oldflag.course10.model.Klass;
+import com.oldflag.course10.model.Student;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 

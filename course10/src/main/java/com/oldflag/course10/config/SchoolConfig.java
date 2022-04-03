@@ -1,12 +1,11 @@
-package com.example.course10.config;
+package com.oldflag.course10.config;
 
-import com.example.course10.model.School;
+import com.oldflag.course10.model.School;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author oldFlag

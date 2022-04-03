@@ -1,4 +1,4 @@
-package com.example.course10;
+package com.oldflag.course10;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

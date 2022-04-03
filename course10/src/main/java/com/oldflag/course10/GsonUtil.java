@@ -1,4 +1,4 @@
-package com.example.course10;
+package com.oldflag.course10;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -22,5 +22,10 @@ public class GsonUtil {
         return GSON.fromJson(json, new TypeToken<T>() {
         }.getType());
     }
+
+    public static String toJson(Object o) {
+        return GSON.toJson(o);
+    }
+
 
 }

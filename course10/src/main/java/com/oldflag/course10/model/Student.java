@@ -1,4 +1,4 @@
-package com.example.course10.model;
+package com.oldflag.course10.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

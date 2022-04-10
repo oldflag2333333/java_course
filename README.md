@@ -6,5 +6,5 @@
 - course05 使用netty实现的简易网关 (week3 命题)
 - course06 线程调度+多线程脑图（week4 命题)
 - course09 实现 Spring Bean 的装配（week5 必做1）
-- course10 Student/Klass/School 实现自动配置和 Starter(尝试在course09中引用 School)(week5 必做2)
+- course10 Student/Klass/School 实现自动配置和 Starter(尝试在course09中引用 School)(week5 必做2 3)
 - course12 表结构定义（week6 必做）

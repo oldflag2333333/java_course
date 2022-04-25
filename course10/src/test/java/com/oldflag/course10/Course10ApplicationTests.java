@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,19 +40,21 @@ class Course10ApplicationTests {
 
     @Test
     void saveTest1() throws SQLException {
-        System.out.println(classicJDBC.save("insert into crew (id, name) values (1, 'spike');"));
-        System.out.println(classicJDBC.save("insert into crew (id, name) values (2, 'jet');"));
-        System.out.println(classicJDBC.save("insert into crew (id, name) values (3, 'faye');"));
-        System.out.println(classicJDBC.save("insert into crew (id, name) values (4, 'ain');"));
+        Statement statement = classicJDBC.getStatement();
+        System.out.println(classicJDBC.save(statement, "insert into crew (id, name) values (1, 'spike');"));
+        System.out.println(classicJDBC.save(statement, "insert into crew (id, name) values (2, 'jet');"));
+        System.out.println(classicJDBC.save(statement, "insert into crew (id, name) values (3, 'faye');"));
+        System.out.println(classicJDBC.save(statement, "insert into crew (id, name) values (4, 'ain');"));
+        classicJDBC.release(statement);
     }
 
     @Test
     void saveTest2() throws SQLException {
-        classicJDBC.prepareSave("insert into crew (id, name)\n" +
-                "values (1, 'spike'),\n" +
-                "       (2, 'jet'),\n" +
-                "       (3, 'faye'),\n" +
-                "       (4, 'ain');\n");
+//        classicJDBC.preparedSave("insert into crew (id, name)\n" +
+//                "values (1, 'spike'),\n" +
+//                "       (2, 'jet'),\n" +
+//                "       (3, 'faye'),\n" +
+//                "       (4, 'ain');\n");
     }
 
 

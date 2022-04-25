@@ -3,6 +3,7 @@ package com.oldflag.course10.db.classic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,32 +44,67 @@ public class ClassicJDBC {
         return 0;
     }
 
-    public boolean save(String sql) throws SQLException {
+    public Statement getStatement() throws SQLException {
         Connection conn = connManager.getConnection();
-        Statement statement;
-        boolean result = false;
         try {
-            statement = conn.createStatement();
-            result = statement.execute(sql);
+           return conn.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            connManager.releaseConnection(conn);
+        }
+        return null;
+    }
+
+    public void release(Statement statement) throws SQLException {
+        Connection connection = statement.getConnection();
+        statement.close();
+        connection.close();
+    }
+
+    public boolean save(Statement statement, String sql) throws SQLException {
+        if (StringUtils.isEmpty(sql)) {
+            return false;
+        }
+        boolean result = false;
+        try {
+            result = statement.executeUpdate(sql) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return result;
     }
 
-    public boolean prepareSave(String sql) throws SQLException {
+    public PreparedStatement prepare(String template) throws SQLException {
         Connection conn = connManager.getConnection();
-        PreparedStatement statement;
-        boolean result = false;
-        try {
+        conn.setAutoCommit(false);
+        return conn.prepareStatement(template);
+    }
 
-            conn.setAutoCommit(false);
-            statement = conn.prepareStatement(sql);
+    public boolean preparedSave(PreparedStatement statement) throws SQLException {
+        boolean result = false;
+        Connection conn = statement.getConnection();
+        try {
             statement.execute();
             conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            conn.rollback();
+        } finally {
+//            connManager.releaseConnection(conn);
+        }
+
+        return result;
+    }
+
+    public boolean preparedSaveBatch(PreparedStatement statement) throws SQLException {
+        boolean result = false;
+        Connection conn = statement.getConnection();
+        try {
+            System.out.println("开始执行");
+            statement.executeBatch();
+            System.out.println("准备提交");
+            conn.commit();
+            System.out.println("执行结束");
         } catch (SQLException e) {
             e.printStackTrace();
             conn.rollback();
@@ -78,6 +114,5 @@ public class ClassicJDBC {
 
         return result;
     }
-
 
 }

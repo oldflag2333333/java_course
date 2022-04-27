@@ -29,7 +29,7 @@ public class SQLAspect {
 
     @Around("@annotation(SQL)")
     public Object around(ProceedingJoinPoint proceedingJoinPoint, SQL SQL) {
-        Class clazz = SQL.value();
+        Class<?> clazz = SQL.value();
         try {
             System.out.println("executing sql");
             String sql = (String) proceedingJoinPoint.proceed();

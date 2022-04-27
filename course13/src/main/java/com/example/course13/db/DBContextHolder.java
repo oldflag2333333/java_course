@@ -1,7 +1,5 @@
 package com.example.course13.db;
 
-import org.apache.commons.lang3.StringUtils;
-
 /**
  * @author oldFlag
  * @since 2022/4/26
@@ -15,14 +13,7 @@ public class DBContextHolder {
     }
 
     public static void setContext(String content) {
-        String c = context.get();
-        if (c == null) {
-            context.set(content);
-        } else {
-            if (!StringUtils.equals(DBConstants.MASTER, c)) {
-                context.set(content);
-            }
-        }
+        context.set(content);
     }
 
     public static void clear() {

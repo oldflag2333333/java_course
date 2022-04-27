@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderMapper {
 
-    @Load(value = DBConstants.SLAVE)
+    @Load(DBConstants.SLAVE)
     @SQL(OrderDO.class)
     public Object getOrderFromSlave() {
         return "select * from `order` limit 1";
     }
 
-    @Load(value = DBConstants.MASTER)
+    @Load(DBConstants.MASTER)
     @SQL(OrderDO.class)
     public Object getOrderFromMaster() {
         return "select * from `order` limit 1";

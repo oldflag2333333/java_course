@@ -24,7 +24,7 @@ public class DBConfig {
     private DBProperties dbProperties;
 
     @Bean
-    public DataSourceRouter classicConnManager() {
+    public DataSourceRouter dataSourceRouter() {
         Map<Object, Object> targetDataSources = new HashMap<>();
 
         dbProperties.getAddress().forEach((key, value) -> targetDataSources.put(key,

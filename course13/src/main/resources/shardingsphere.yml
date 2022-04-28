@@ -1,0 +1,32 @@
+dataSources:
+  primary_ds: #!!com.zaxxer.hikari.HikariDataSource
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://47.97.112.9:3306/db?serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+  replica_ds_0: #!!com.zaxxer.hikari.HikariDataSource
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://47.97.112.9:3307/db?serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+
+rules:
+- !READWRITE_SPLITTING
+  dataSources:
+    rw_ds: # Logic data source name of readwrite-splitting
+      writeDataSourceName: primary_ds
+      readDataSourceNames:
+      - replica_ds_0
+
+  # Load balance algorithm configuration
+  loadBalancers:
+    RR:
+      type: RANDOM
+#        props: # Load balance algorithm properties
+      # ...
+
+props:
+  sql-show: true
+# ...

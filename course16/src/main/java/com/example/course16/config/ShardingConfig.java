@@ -17,10 +17,8 @@ import java.sql.SQLException;
 public class ShardingConfig {
 
     @Bean("shardingDataSource")
-    public DataSource createDataSource() throws SQLException, ClassNotFoundException {
+    public DataSource createDataSource() throws SQLException {
         // Build data source map
-
-        Class.forName("com.mysql.jdbc.Driver");
         try (InputStream resourceAsStream = ShardingConfig.class.getClassLoader().getResourceAsStream("config-sharding.yaml")) {
             int length = resourceAsStream.available();
             byte[] byteArray = new byte[length];

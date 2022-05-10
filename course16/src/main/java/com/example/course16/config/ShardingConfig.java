@@ -1,8 +1,6 @@
-package com.example.course13.config;
+package com.example.course16.config;
 
 import org.apache.shardingsphere.driver.api.yaml.YamlShardingSphereDataSourceFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,16 +11,17 @@ import java.sql.SQLException;
 
 /**
  * @author oldFlag
- * @since 2022/4/27
+ * @since 2022/5/10
  */
 @Configuration
 public class ShardingConfig {
 
     @Bean("shardingDataSource")
-    public DataSource createDataSource() throws SQLException {
+    public DataSource createDataSource() throws SQLException, ClassNotFoundException {
         // Build data source map
 
-        try (InputStream resourceAsStream = ShardingConfig.class.getClassLoader().getResourceAsStream("shardingsphere.yml")) {
+        Class.forName("com.mysql.jdbc.Driver");
+        try (InputStream resourceAsStream = ShardingConfig.class.getClassLoader().getResourceAsStream("config-sharding.yaml")) {
             int length = resourceAsStream.available();
             byte[] byteArray = new byte[length];
             resourceAsStream.read(byteArray);
@@ -33,6 +32,5 @@ public class ShardingConfig {
             throw new RuntimeException(e);
         }
     }
-
 
 }

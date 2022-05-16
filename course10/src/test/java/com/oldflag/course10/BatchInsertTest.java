@@ -46,7 +46,8 @@ public class BatchInsertTest {
 
 
     /**
-     * 1w 110s
+     * 单条循环写入
+     * 插入1w 110s
      *
      * @throws SQLException
      */
@@ -62,7 +63,8 @@ public class BatchInsertTest {
     }
 
     /**
-     * 13.425 s
+     * 使用 insert into (...) values (...),(...) 方式插入
+     * 插入100w 13.425 s
      *
      * @throws SQLException
      */
@@ -81,7 +83,8 @@ public class BatchInsertTest {
     }
 
     /**
-     * 1w 225.6s
+     * 使用 preparedStatement 插入
+     * 插入1w 225.6s
      *
      * @throws SQLException
      */
@@ -99,7 +102,8 @@ public class BatchInsertTest {
     }
 
     /**
-     * 1w 条 60s
+     * 优化 preparedStatement 插入
+     * 插入1w 条 60s
      *
      * @throws SQLException
      */
